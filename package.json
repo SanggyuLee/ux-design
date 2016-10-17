@@ -1,0 +1,20 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --debug"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron-prebuilt": "^1.4.3"
+  },
+  "dependencies": {
+    "devtron": "^1.4.0",
+    "glob": "^7.1.1",
+    "twitter": "^1.4.0"
+  }
+}
