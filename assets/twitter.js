@@ -8,7 +8,7 @@ ipc.on('get-twitter-trend', function(event, path) {
 		if(i == 10)
 			break;
 
-		output += `<div>${object[i].name}<br></div>`
+		output += `<button type="button" id="${object[i].name}">${object[i].name}<br></button>`
 	}
 	document.querySelector(".twitter-result").innerHTML = output
 })
