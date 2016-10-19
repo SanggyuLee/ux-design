@@ -63,7 +63,8 @@ button {
 	padding: 7px 12px;
 	min-width: 120px;
 
-	color: #6e80a0;
+	color: lightslategray;
+	background-color: linen;
 	border: 0;
 	border-radius: 20px;
 
