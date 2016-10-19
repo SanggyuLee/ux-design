@@ -8,7 +8,23 @@ ipc.on('get-twitter-trend', function(event, path) {
 		if(i == 10)
 			break;
 
-		output += `<button type="button" id="${object[i].name}">${object[i].name}<br></button>`
+		output += `<button type="button" id="${object[i].name}">${object[i].name}</button>`
 	}
+
+	var timer = 0
+	var opacity = 0
+
+	function slow_motion() {
+		opacity += 0.04
+		document.querySelector(".twitter-result").style.opacity = opacity
+	
+		if(opacity >= 1)
+			clearInterval(timer)
+	}
+
+	timer = setInterval(slow_motion, 50)
+
+	document.querySelector(".twitter-result").style.opacity = opacity
+	document.querySelector(".twitter-result").style.display = "flex"
 	document.querySelector(".twitter-result").innerHTML = output
 })

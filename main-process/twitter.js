@@ -9,14 +9,9 @@ const client = new Twitter({
 });
 
 ipc.on('request-twitter-trend', function(event, args) {
-	// Seoul: 1132599
+	// Seoul: 1132599, US: 23424977
 	client.get('trends/place', {id:23424977}, function(error, tweets, response) {
 		if(!error) {
-			//console.log(tweets)
-
-			//var objects = JSON.parse(tweets);
-			//objects = objects[0]['trends']
-
 			event.sender.send('get-twitter-trend', tweets)
 		} else {
 			console.log(error)

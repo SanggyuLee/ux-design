@@ -1,9 +1,77 @@
+/* ---------- Fonts ---------- */
+
+@font-face {
+	font-family: 'Source Code Pro';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Source Code Pro'), local('SourceCodePro'), url(fonts/SourceCodePro-Regular.ttf) format('truetype');
+}
+
+/* ---------- Global ---------- */
+
 html {
 	height: 100%;
+
+	font-family: 'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
 
 	/* Gradient background from #f7cac9 to #92a8d1 */ 
 	background: -webkit-linear-gradient(top, #f7cac9, #92a8d1); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(bottom, #f7cac9, #92a8d1); /* For Opera 11.1 to 12.0 */
 	background: -moz-linear-gradient(bottm, #f7cac9, #92a8d1); /* For Firefox 3.6 to 15 */
 	background: linear-gradient(to bottom, #f7cac9, #92a8d1); /* Standard syntax (must be last) */
+}
+
+body {
+	height: 100%;
+	display: flex;
+
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.twitter-result {
+	display: none;
+	opacity: 0;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	margin: 20px;
+	padding: 20px;
+
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 20px;
+}
+
+.articles {
+	display: none;
+	opacity: 0;
+
+	flex-direction: column;
+
+	margin: 20px;
+	padding: 20px;
+
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 20px;
+}
+
+button {
+	display: inline-block;
+	margin: 6px;
+	padding: 7px 12px;
+	min-width: 120px;
+
+	color: #6e80a0;
+	border: 0;
+	border-radius: 20px;
+
+	font-size: 17px;
+	text-decoration: none;
+}
+
+button:hover, button:active {
+	color:#fff;
+	background:#6e80a0;
 }
