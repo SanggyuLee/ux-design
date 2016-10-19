@@ -27,10 +27,9 @@ function initialize() {
 
 		if(debug) {
 			mainWindow.webContents.openDevTools()
+			mainWindow.maximize()
 			require('devtron').install()
 		}
-
-		mainWindow.maximize()
 
 		mainWindow.on('closed', function() {
 			mainWindow = null

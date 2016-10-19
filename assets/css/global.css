@@ -15,10 +15,10 @@ html {
 	font-family: 'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
 
 	/* Gradient background from #f7cac9 to #92a8d1 */ 
-	background: -webkit-linear-gradient(top, #f7cac9, #92a8d1); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(bottom, #f7cac9, #92a8d1); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(bottm, #f7cac9, #92a8d1); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(to bottom, #f7cac9, #92a8d1); /* Standard syntax (must be last) */
+	background: -webkit-linear-gradient(top, #92a8d1, #f7cac9); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(bottom, #92a8d1, #f7cac9); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(bottm, #92a8d1, #f7cac9); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to bottom, #92a8d1, #f7cac9); /* Standard syntax (must be last) */
 }
 
 body {
