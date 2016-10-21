@@ -11,6 +11,8 @@
 
 html {
 	height: 100%;
+	margin: 0;
+	padding: 0;
 
 	font-family: 'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
 
@@ -19,20 +21,23 @@ html {
 	background: -o-linear-gradient(bottom, #92a8d1, #f7cac9); /* For Opera 11.1 to 12.0 */
 	background: -moz-linear-gradient(bottm, #92a8d1, #f7cac9); /* For Firefox 3.6 to 15 */
 	background: linear-gradient(to bottom, #92a8d1, #f7cac9); /* Standard syntax (must be last) */
+	background-attachment: fixed;
 }
 
 body {
-	height: 100%;
 	display: flex;
+
+	overflow: auto;
 
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 }
 
-.twitter-result {
-	display: none;
+.twitter-result-box {
+	display: flex;
 	opacity: 0;
+
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -44,9 +49,10 @@ body {
 	border-radius: 20px;
 }
 
-.articles {
-	display: none;
+.article-box {
+	display: flex;
 	opacity: 0;
+	overflow: auto;
 
 	flex-direction: column;
 
@@ -55,6 +61,25 @@ body {
 
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius: 20px;
+}
+
+.article-box .article {
+	display: flex;
+	flex-direction: row;
+
+	padding: 10px;
+
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 20px;
+}
+
+.article-box .article .thumbnail {
+	margin-right: 10px;
+}
+
+.article-box .article .content {
+	display: flex;
+	flex-direction: column;
 }
 
 button {
