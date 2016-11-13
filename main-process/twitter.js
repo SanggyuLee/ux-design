@@ -1,6 +1,6 @@
-const ipc = require('electron').ipcMain
-
+const ipc = require('electron').ipcMain;
 const Twitter = require('twitter');
+
 const client = new Twitter({
 	consumer_key: 'N3wqJX6CkJqDDnhjDwQavpSyT',
 	consumer_secret: 'idmQdGuRMeDRRaeS0UwDUizKldySA30jbg9jbNLFp6g1tC3dEB',
@@ -9,13 +9,14 @@ const client = new Twitter({
 });
 
 ipc.on('request-twitter-trend', function(event, args) {
+	console.log(args);
 	// Seoul: 1132599, US: 23424977
 	client.get('trends/place', {id:23424977}, function(error, tweets, response) {
 		if(!error) {
-			event.sender.send('get-twitter-trend', tweets)
+			event.sender.send('get-twitter-trend', tweets);
 		} else {
-			console.log(error)
-			event.sender.send('get-twitter-trned', error)
+			console.log(error);
+			event.sender.send('get-twitter-trend', error);
 		}
-	})
-})
+	});
+});

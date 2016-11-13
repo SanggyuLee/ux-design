@@ -1,30 +1,48 @@
-const ipc = require('electron').ipcRenderer
+const ipc = require('electron').ipcRenderer;
+const wordcloud = require('WordCloud');
 
-ipc.send('request-twitter-trend', '')
+console.log(wordcloud);
+console.log(wordcloud.isSupported);
+
+ipc.send('request-twitter-trend', '');
+
 ipc.on('get-twitter-trend', function(event, path) {
-	var object = path[0].trends
-	var output = '';
-	for(var i = 0; i < object.length; i++) {
+	console.log(path);
+	let object = path[0].trends;
+	let output = '';
+	for(let i = 0; i < object.length; i++) {
 		if(i == 10)
 			break;
 
-		output += `<button type="button" id="${object[i].name}">${object[i].name}</button>`
+		output += `<button type="button" id="${object[i].name}">${object[i].name}</button>`;
 	}
 
-	var timer = 0
-	var opacity = 0
+	let timer = 0;
+	let opacity = 0;
 
 	function slow_motion() {
-		opacity += 0.04
-		document.querySelector(".twitter-result-box").style.opacity = opacity
+		opacity += 0.04;
+		document.querySelector(".twitter-result-box").style.opacity = opacity;
 	
 		if(opacity >= 1)
-			clearInterval(timer)
+			clearInterval(timer);
 	}
 
-	timer = setInterval(slow_motion, 50)
+	timer = setInterval(slow_motion, 50);
 
-	document.querySelector(".twitter-result-box").style.opacity = opacity
-	document.querySelector(".twitter-result-box").style.display = "flex"
-	document.querySelector(".twitter-result-box").innerHTML = output
-})
+	document.querySelector(".twitter-result-box").style.opacity = opacity;
+	document.querySelector(".twitter-result-box").style.display = "flex";
+	document.querySelector(".twitter-result-box").innerHTML = output;
+
+	let list = [];
+
+	for(let i = 0; i < object.length; i++) {
+		let temp = [];
+		temp.push(object[i].name);
+		temp.push(object.length - i);
+
+		list.push(temp);
+	}
+
+	wordcloud(document.getElementById("twitter"), {gridSize: 10, weightFactor: 3, list: list});
+});

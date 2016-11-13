@@ -100,4 +100,5 @@ button {
 button:hover, button:active {
 	color:#fff;
 	background:#6e80a0;
+	cursor: pointer;
 }
