@@ -9,7 +9,7 @@ Node.js가 설치되었다는 가정하에 진행을 하겠습니다.
 Git을 사용할 줄 안다면,
 
 ```sh
-git clone http://github.com/SanggyuLee/rx-design
+git clone http://github.com/SanggyuLee/ux-design
 ```
 
 Git을 사용해 본적이 없다면, 오른쪽 위에 Clone or download를 누르고 Download Zip을 누릅니다.
@@ -18,7 +18,9 @@ cd 명령어로 다운 받은 폴더를 찾아갑니다. 그리고 해당 폴더
 ```sh
 npm install
 ```
-이라고 친 이후에
+이라고 치면 필요한 모듈들이 설치가 됩니다.
+
+## 실행
 
 ```sh
 npm start
