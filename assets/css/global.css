@@ -16,15 +16,13 @@ html {
 
 	font-family: 'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
 
-	/* Gradient background from #f7cac9 to #92a8d1 */ 
-	background: -webkit-linear-gradient(top, #92a8d1, #f7cac9); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(bottom, #92a8d1, #f7cac9); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(bottm, #92a8d1, #f7cac9); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(to bottom, #92a8d1, #f7cac9); /* Standard syntax (must be last) */
-	background-attachment: fixed;
+	background-color: #262626;
 }
 
 body {
+	width: 100%;
+	height: 100%;
+
 	display: flex;
 
 	overflow: auto;
@@ -34,23 +32,38 @@ body {
 	align-items: center;
 }
 
-.twitter-result-box {
-	display: flex;
-	opacity: 0;
-
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-
-	margin: 20px;
-	padding: 20px;
-
-	background-color: rgba(255, 255, 255, 0.5);
-	border-radius: 20px;
+#twitter {
+	width: 90%;
+	height: 90%;
+	display: none;
 }
 
-.article-box {
-	display: flex;
+.tweet {
+	display: inline-block;
+	vertical-align: middle;
+
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+
+.tweet:hover {
+	color: #fabcde;
+	cursor: pointer;
+
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
+	-webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+	transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
+#articles {
+	display: none;
 	opacity: 0;
 	overflow: auto;
 
@@ -63,7 +76,7 @@ body {
 	border-radius: 20px;
 }
 
-.article-box .article {
+#articles .article {
 	display: flex;
 	flex-direction: row;
 
@@ -73,11 +86,11 @@ body {
 	border-radius: 20px;
 }
 
-.article-box .article .thumbnail {
+#articles .article .thumbnail {
 	margin-right: 10px;
 }
 
-.article-box .article .content {
+#articles .article .content {
 	display: flex;
 	flex-direction: column;
 }

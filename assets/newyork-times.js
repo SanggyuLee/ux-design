@@ -6,7 +6,7 @@ ipc.on('get-NYTimes-articles', function(event, args) {
 
 	function slow_motion() {
 		opacity += 0.04
-		document.querySelector(".article-box").style.opacity = opacity
+		document.getElementById("articles").style.opacity = opacity
 	
 		if(opacity >= 1)
 			clearInterval(timer)
@@ -52,7 +52,7 @@ ipc.on('get-NYTimes-articles', function(event, args) {
 
 	timer = setInterval(slow_motion, 50)
 
-	document.querySelector(".article-box").style.opacity = opacity
-	document.querySelector(".article-box").style.display = "flex"
-	document.querySelector(".article-box").innerHTML = output
+	document.getElementById("articles").style.opacity = opacity
+	document.getElementById("articles").style.display = "flex"
+	document.getElementById("articles").innerHTML = output
 })

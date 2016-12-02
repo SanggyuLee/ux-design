@@ -2,6 +2,7 @@ const ipc = require('electron').ipcMain
 const request = require('request')
 
 ipc.on('request-NYTimes-articles', function(event, args) {
+	console.log("request-NYTimes-articles");
 	request.get({
 		url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
 		qs: {

@@ -3,15 +3,28 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./assets/css/global.css">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Chela+One" />
+		<link href="assets/dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css"/>
+	
+		<!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		<script type="text/javascript" src="assets/dist/jquery.vmap.js"></script>
+		<script type="text/javascript" src="assets/dist/maps/jquery.vmap.world.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/jquery.vmap.sampledata.js"></script>
+		
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+
+		<script>
+		</script>
 	</head>
 
 	<body>
-		<div class="twitter-result-box" id="twitter">
-		</div>
-
-		<div class="article-box">
-		</div>
-
+		<div id="twitter"></div>
+		<div id="articles"></div>
+		<div id="vmap" style="width: 90%; height: 90%;"></div>
 		<script>
 			require("./assets/newyork-times")
 			require("./assets/twitter")
@@ -19,3 +32,4 @@
 		</script>
 	</body>
 </html>
+

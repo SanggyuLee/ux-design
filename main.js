@@ -25,10 +25,10 @@ function initialize() {
 
 		mainWindow = new browserWindow(windowOptions);
 		mainWindow.loadURL(path.join('file://', __dirname, '/index.html'));
+		mainWindow.maximize();
 
 		if(debug) {
 			mainWindow.webContents.openDevTools();
-			mainWindow.maximize();
 			require('devtron').install();
 		}
 
