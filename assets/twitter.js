@@ -30,7 +30,7 @@ ipc.on('get-twitter-country', function(event, tweets) {
 
 				bar.appendChild(worldmap);
 
-				document.getElementById("twitter").style.display = "flex";
+				document.getElementById("twitter").style.display = "inherit";
 				ipc.send('request-twitter-trend', tweets[i].woeid);
 
 				break;
