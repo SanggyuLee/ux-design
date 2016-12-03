@@ -1,5 +1,6 @@
 const ipc = require('electron').ipcRenderer;
 const wordcloud = require('WordCloud');
+let onRegionClick = null;
 
 console.log(wordcloud);
 console.log(wordcloud.isSupported);
@@ -7,19 +8,21 @@ console.log(wordcloud.isSupported);
 ipc.send('request-twitter-country', '');
 
 ipc.on('get-twitter-country', function(event, tweets) { 
-	let onRegionClick = (element, code, region) => {
+	onRegionClick = (element, code, region) => {
 		let isExist = false;
+		console.log("hahaha");
 		for(let i = 0; i < tweets.length; i++) {
 			if(tweets[i].name === region) {
 				isExist = true;
 				document.body.style.display = "relative";
 				document.getElementById("vmap").style.display = "none";
-				let bar = document.getElementById("bar");
-				bar.style.display = "flex";
 
 				let worldmap = document.createElement("img");
 				worldmap.src = "./assets/img/worldmap.png";
 				worldmap.style.cursor = "pointer";
+				worldmap.style.position = "absolute";
+				worldmap.style.top = "30px";
+				worldmap.style.left = "30px";
 				worldmap.id = "worldmap";
 				worldmap.onclick = (event) => {
 					location.reload();
@@ -28,10 +31,10 @@ ipc.on('get-twitter-country', function(event, tweets) {
 				let label = document.getElementById("label");
 				label.innerHTML = region;
 
-				bar.appendChild(worldmap);
+				document.body.appendChild(worldmap);
 
 				document.getElementById("twitter").style.display = "inherit";
-				ipc.send('request-twitter-trend', tweets[i].woeid);
+				ipc.send('request-twitter-trend', tweets[i].woeid, region);
 
 				break;
 			}
@@ -55,47 +58,9 @@ ipc.on('get-twitter-country', function(event, tweets) {
 			onRegionClick: onRegionClick
 		});
 	});
-//
-//	let list = [];
-//
-//	let rank = 0;
-//	for(let i = 0; i < tweets.length; i++) {
-//		if(tweets[i].placeType.code !== 7) {
-//			let temp = [];
-//			temp.push(tweets[i].name);
-//			temp.push(13);
-//
-//			list.push(temp);
-//		}
-//	}
-//
-//	let selectCountry = (item) => {
-//		console.log("item:" + item[0]);
-//		for(let i = 0; i < tweets.length; i++) {
-//			if(tweets[i].name === item[0]) {
-//				console.log(tweets[i]);
-//				ipc.send('request-twitter-trend', tweets[i].woeid);
-//				break;
-//			}
-//		}
-//	};
-//
-//	wordcloud(document.getElementById("twitter"), 
-//			{
-//				gridSize: 10, 
-//				color: 'sanggyu',
-//				weightFactor: 4, 
-//				classes: 'tweet',
-//				backgroundColor: 'transparent',
-//				fontFamily: 'Chela One',
-//				list: list,
-//				hover: hover,
-//				click: selectCountry
-//			}
-//	);
 });
 
-ipc.on('get-twitter-trend', (event, path) => {
+ipc.on('get-twitter-trend', (event, path, region) => {
 	console.log(path);
 	let list = [];
 	let tweets = path[0].trends;
@@ -110,16 +75,32 @@ ipc.on('get-twitter-trend', (event, path) => {
 	}
 
 	let hover = (a, b, c) => {
-		console.log(a);
-		console.log(b);
-		console.log(c);
+		c.target.style.cursor = "pointer";
 	};
 
 	let selectTweet = (item) => {
-		console.log(item);
+		let twitter = document.createElement("img");
+		twitter.src = "./assets/img/twitter.png";
+		twitter.style.cursor = "pointer";
+		twitter.style.position = "absolute";
+		twitter.style.top = "30px";
+		twitter.style.left = "130px";
+		twitter.id = "twitmark";
+		twitter.onclick = (event) => {
+			document.body.removeChild(document.getElementById("worldmap"));
+			document.body.removeChild(document.getElementById("twitmark"));
+			document.getElementById("twitter").innerHTML = "";
+			document.getElementById("articles").style.display = "none";
+			onRegionClick(null, null, region);
+		};
+
 		document.getElementById("label").innerHTML = item[0];
 		document.getElementById("twitter").style.display = "none";
+
+		document.body.appendChild(twitter);
+
 		ipc.send('request-NYTimes-articles', item[0]);
+		ipc.send('request-twitter-search', item[0]);
 	};
 
 	wordcloud(document.getElementById("twitter"), 
@@ -134,4 +115,8 @@ ipc.on('get-twitter-trend', (event, path) => {
 				click: selectTweet
 			}
 	);
+});
+
+ipc.on('get-twitter-search', (event, path) => {
+	console.log(path);
 });

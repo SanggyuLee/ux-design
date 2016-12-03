@@ -46,8 +46,9 @@ body {
 	width: 100%;
 	text-align: center;
 	font-family: 'Chela one';
-	font-size: 10em;
+	font-size: 9em;
 	color: #88fcc4;
+	position: relative;
 }
 
 #worldmap {
@@ -56,19 +57,60 @@ body {
 
 	filter: invert(100);
 }
+#worldmap:hover {
+	z-index: 10;
 
-#bar {
-	width: 100%;
-	height: 10%;
-	display: none;
+	opacity: 1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
 }
 
 #twitter {
 	width: 100%;
 	height: 100%;
 	display: none;
+	position: absolute;
+	top: 0;
 
 	border: "1px solid #c8c8c8";
+}
+
+#twitmark {
+	width: 100px;
+	height: 100px;
+
+	filter: invert(100);
+}
+#twitmark:hover {
+	z-index: 10;
+
+	opacity: 1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
+}
+
+.tweet:hover {
+	z-index: 10;
+
+	opacity: 1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
+}
+@-webkit-keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 #articles {
@@ -100,8 +142,18 @@ body {
 }
 
 #articles .article .content {
-	display: flex;
+	width: 100%;
 	flex-direction: column;
+}
+
+#articles .article .copytoclip {
+	cursor: pointer;
+	background-color: #c8c8c8;
+	border-radius: 14px;
+	width: 80px;
+	font-weight: 600;
+	padding: 5px;
+	float: right;
 }
 
 button {

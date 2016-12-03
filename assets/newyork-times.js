@@ -1,6 +1,7 @@
 const ipc = require('electron').ipcRenderer
 
 ipc.on('get-NYTimes-articles', function(event, args) {
+	console.log(args);
 	var timer = 0
 	var opacity = 0
 
@@ -40,6 +41,10 @@ ipc.on('get-NYTimes-articles', function(event, args) {
 	
 					<div class="snippet">
 						${articles[i].snippet}
+					</div>
+
+					<div class="copytoclip" onclick="ipc.send('copy-url-to-clipboard', '${articles[i].web_url}')">
+						Copy URL
 					</div>
 				</div>
 			</div>

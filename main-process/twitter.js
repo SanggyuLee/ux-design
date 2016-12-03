@@ -10,6 +10,7 @@ const client = new Twitter({
 
 ipc.on('request-twitter-country', function(event, args) {
 	console.log(args);
+
 	client.get('trends/available', {id:23424977}, function(error, tweets, response) {
 		if(!error) {
 			event.sender.send('get-twitter-country', tweets);
@@ -20,14 +21,26 @@ ipc.on('request-twitter-country', function(event, args) {
 	});
 });
 
-ipc.on('request-twitter-trend', function(event, args) {
+ipc.on('request-twitter-trend', function(event, args, region) {
 	console.log('request trend: ' + args);
 	client.get('trends/place', {id:args, exclude: 'hashtags'}, function(error, tweets, response) {
 		if(!error) {
-			event.sender.send('get-twitter-trend', tweets);
+			event.sender.send('get-twitter-trend', tweets, region);
 		} else {
 			console.log(error);
-			event.sender.send('get-twitter-trend', error);
+			event.sender.send('get-twitter-trend', error, region);
+		}
+	});
+});
+
+ipc.on('request-twitter-search', function(event, args) {
+	console.log('request search: ' + args);
+	client.get('search/tweets', {q:args}, function(error, tweets, response) {
+		if(!error) {
+			event.sender.send('get-twitter-search', tweets);
+		} else {
+			console.log(error);
+			event.sender.send('get-twitter-search', error);
 		}
 	});
 });
