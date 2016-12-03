@@ -32,6 +32,22 @@
 
 		<script>
 			const ipc = require('electron').ipcRenderer;
+			let urlCopy = (url) => {
+				alert("Copied!");
+				ipc.send('copy-url-to-clipboard', url);
+			};
+
+			let openArticle = (url) => {
+				const BrowserWindow = require('electron').remote.BrowserWindow;
+				const path = require('path');
+			
+				const modalPath = path.join('file://', __dirname, '../../sections/windows/modal.html');
+				let win = new BrowserWindow({width: 800, height: 600});
+				win.on('close', function () { win = null });
+				win.loadURL(url);
+				win.show();
+			};
+
 			require("./assets/newyork-times");
 			require("./assets/twitter");
 			require("./assets/nav");

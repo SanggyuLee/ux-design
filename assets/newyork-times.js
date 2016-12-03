@@ -36,14 +36,14 @@ ipc.on('get-NYTimes-articles', function(event, args) {
 
 				<div class="content">
 					<div class="headline">
-						<a href="${articles[i].web_url}"> ${articles[i].headline.main} </a>
+						<div onclick="openArticle('${articles[i].web_url}')"> ${articles[i].headline.main} </div>
 					</div>
 	
 					<div class="snippet">
 						${articles[i].snippet}
 					</div>
 
-					<div class="copytoclip" onclick="ipc.send('copy-url-to-clipboard', '${articles[i].web_url}')">
+					<div class="copytoclip" onclick="urlCopy('${articles[i].web_url}')">
 						Copy URL
 					</div>
 				</div>
@@ -53,6 +53,7 @@ ipc.on('get-NYTimes-articles', function(event, args) {
 
 		console.log(articles[i].multimedia)
 	}
+
 
 
 	timer = setInterval(slow_motion, 50)

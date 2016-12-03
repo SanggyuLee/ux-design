@@ -156,6 +156,13 @@ body {
 	float: right;
 }
 
+#articles .article .copytoclip:hover {
+	opacity: 1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
+}
+
+
 button {
 	display: inline-block;
 	margin: 6px;
