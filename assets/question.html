@@ -1,0 +1,57 @@
+<style>
+body {
+  font-family: system, -apple-system, '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+  color: #fff;
+  background-color: #262626;
+  text-align: center;
+  font-size: 40px;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+textarea {
+	width: 70%;
+	height: 30%;
+	position: absolute;
+	top: 35%;
+	left: 15%;
+	font-size: 30px;
+}
+
+input {
+	cursor: pointer;
+	width: 15%;
+	position: absolute;
+	top: 75%;
+	left: 42.5%;
+
+	background-color: #f23456;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+</style>
+
+<script>
+	let sent = () => {
+		alert('Sent!');
+		window.close();
+	};
+</script>
+<h2>Contact us!</h2>
+
+<textarea autofocus></textarea>
+<input type='submit' value='send' onclick="sent()"/>
+

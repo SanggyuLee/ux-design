@@ -31,6 +31,8 @@ body {
 }
 
 #question {
+	cursor: pointer;
+
 	width: 30px;
 	height: 30px;
 
@@ -119,6 +121,7 @@ body {
 	overflow: auto;
 
 	flex-direction: column;
+	width: 50%;
 
 	margin: 20px;
 	padding: 20px;
@@ -135,6 +138,18 @@ body {
 
 	background-color: rgba(255, 255, 255, 0.7);
 	border-radius: 20px;
+}
+
+#articles .article .headline {
+	cursor: pointer;
+	text-decoration: underline;
+	color: blue;
+}
+
+#articles .article .headline:hover {
+	opacity: 1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
 }
 
 #articles .article .thumbnail {

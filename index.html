@@ -28,23 +28,29 @@
 		<div id="articles"></div>
 
 		<div id="vmap" style="width: 100%; height: 100%;"></div>
-		<img src="./assets/img/question.png" id="question">
+		<img src="./assets/img/question.png" id="question" onclick="openQuestion()">
 
 		<script>
 			const ipc = require('electron').ipcRenderer;
+			const BrowserWindow = require('electron').remote.BrowserWindow;
+			const path = require('path');
 			let urlCopy = (url) => {
 				alert("Copied!");
 				ipc.send('copy-url-to-clipboard', url);
 			};
 
 			let openArticle = (url) => {
-				const BrowserWindow = require('electron').remote.BrowserWindow;
-				const path = require('path');
-			
-				const modalPath = path.join('file://', __dirname, '../../sections/windows/modal.html');
 				let win = new BrowserWindow({width: 800, height: 600});
 				win.on('close', function () { win = null });
 				win.loadURL(url);
+				win.show();
+			};
+
+			let openQuestion = () => {
+				const question = path.join('file://', __dirname, './assets/question.html');
+				let win = new BrowserWindow({width: 800, height: 600});
+				win.on('close', function () { win = null });
+				win.loadURL(question);
 				win.show();
 			};
 
