@@ -30,17 +30,35 @@ body {
 	align-items: center;
 }
 
-#question {
+#banner {
+	background-color: #343434;
+	width: 100%;
+}
+
+#habari {
+	display: block;
+	margin: auto;
+}
+
+#contact-us {
 	cursor: pointer;
 
-	width: 30px;
+	width: 140px;
 	height: 30px;
 
 	filter: invert(100);
 	position: absolute;
 
-	right: 20px;
+	right: 10px;
 	bottom: 20px;
+
+	font-weight: 900;
+
+}
+
+#question {
+	width: 40px;
+	height: 40px;
 }
 
 #label {
@@ -78,8 +96,8 @@ body {
 }
 
 #twitmark {
-	width: 100px;
-	height: 100px;
+	width: 70px;
+	height: 70px;
 
 	filter: invert(100);
 }

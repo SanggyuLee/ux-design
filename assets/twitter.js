@@ -16,6 +16,7 @@ ipc.on('get-twitter-country', function(event, tweets) {
 				isExist = true;
 				document.body.style.display = "relative";
 				document.getElementById("vmap").style.display = "none";
+				document.getElementById("banner").style.display = "none";
 
 				let worldmap = document.createElement("img");
 				worldmap.src = "./assets/img/worldmap.png";
@@ -26,6 +27,7 @@ ipc.on('get-twitter-country', function(event, tweets) {
 				worldmap.id = "worldmap";
 				worldmap.onclick = (event) => {
 					location.reload();
+					document.getElementById("banner").style.display = "initial";
 				};
 
 				let label = document.getElementById("label");
@@ -79,14 +81,14 @@ ipc.on('get-twitter-trend', (event, path, region) => {
 	};
 
 	let selectTweet = (item) => {
-		let twitter = document.createElement("img");
-		twitter.src = "./assets/img/twitter.png";
-		twitter.style.cursor = "pointer";
-		twitter.style.position = "absolute";
-		twitter.style.top = "30px";
-		twitter.style.left = "130px";
-		twitter.id = "twitmark";
-		twitter.onclick = (event) => {
+		let back = document.createElement("img");
+		back.src = "./assets/img/back.png";
+		back.style.cursor = "pointer";
+		back.style.position = "absolute";
+		back.style.top = "46px";
+		back.style.left = "142px";
+		back.id = "twitmark";
+		back.onclick = (event) => {
 			document.body.removeChild(document.getElementById("worldmap"));
 			document.body.removeChild(document.getElementById("twitmark"));
 			document.getElementById("twitter").innerHTML = "";
@@ -97,7 +99,7 @@ ipc.on('get-twitter-trend', (event, path, region) => {
 		document.getElementById("label").innerHTML = item[0];
 		document.getElementById("twitter").style.display = "none";
 
-		document.body.appendChild(twitter);
+		document.body.appendChild(back);
 
 		ipc.send('request-NYTimes-articles', item[0]);
 		ipc.send('request-twitter-search', item[0]);
