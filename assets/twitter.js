@@ -108,7 +108,7 @@ ipc.on('get-twitter-trend', (event, path, region) => {
 	wordcloud(document.getElementById("twitter"), 
 			{
 				weightFactor: 4, 
-				classes: 'tweet',
+				classes: 'tweets',
 				color: 'sanggyu',
 				fontFamily: 'Chela One',
 				backgroundColor: 'transparent',
@@ -121,4 +121,44 @@ ipc.on('get-twitter-trend', (event, path, region) => {
 
 ipc.on('get-twitter-search', (event, path) => {
 	console.log(path);
+
+	var timer = 0;
+	var opacity = 0;
+
+	function slow_motion() {
+		opacity += 0.04;
+		document.getElementById("tweets").style.opacity = opacity;
+	
+		if(opacity >= 1)
+			clearInterval(timer);
+	}
+
+	timer = setInterval(slow_motion, 50);
+
+	let tweets = path.statuses;
+	let output = '';
+	for(let i = 0; i < tweets.length; i++) {
+		output += `
+			<div class="tweet">
+				<div class="thumbnail" style="display: inline">
+					<img src=${tweets[i].user.profile_image_url} />
+				</div>
+
+				<div class="content">
+					<div class="headline">
+						<div onclick="openArticle('${tweets[i].user.url}')"> ${tweets[i].user.name} </div>
+					</div>
+
+					<div class="snippet">
+						${tweets[i].text}
+					</div>
+				</div>
+			</div>
+			<br>
+			`
+	}
+
+	document.getElementById("tweets").style.opacity = opacity
+	document.getElementById("tweets").style.display = "flex"
+	document.getElementById("tweets").innerHTML = output
 });

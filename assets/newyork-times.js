@@ -54,8 +54,6 @@ ipc.on('get-NYTimes-articles', function(event, args) {
 		console.log(articles[i].multimedia)
 	}
 
-
-
 	timer = setInterval(slow_motion, 50)
 
 	document.getElementById("articles").style.opacity = opacity
