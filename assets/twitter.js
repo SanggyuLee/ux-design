@@ -93,6 +93,7 @@ ipc.on('get-twitter-trend', (event, path, region) => {
 			document.body.removeChild(document.getElementById("twitmark"));
 			document.getElementById("twitter").innerHTML = "";
 			document.getElementById("articles").style.display = "none";
+			document.getElementById("tweets").style.display = "none";
 			onRegionClick(null, null, region);
 		};
 
